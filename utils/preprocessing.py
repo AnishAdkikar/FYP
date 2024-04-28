@@ -11,7 +11,7 @@ def load_dataset(file_path='./train.csv'):
     #     'State by video': ['nice', 'tired'],
     #     'Final state': ['good working', 'tiered working']
     # })
-    return df.head(1000)
+    return df.head(2000)
 
 def rows_to_text(dataframe):
     return [" ".join(str(x) for x in row) for row in dataframe.values]
