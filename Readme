@@ -1,0 +1,2 @@
+Create the config.py in the root dir.
+Insert this code snippet in config.py - API_TOKEN = "<insert token>"

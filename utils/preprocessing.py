@@ -1,6 +1,9 @@
 import pandas as pd
 from PyPDF2 import PdfReader 
-def load_dataset(file_path='./train.csv'):
+# import sys
+# sys.path.append("..")
+from utils.helper import multi_thread
+def load_dataset(file_path='./resources/train.csv'):
     df = pd.read_csv(file_path,usecols=[1])
     # df = pd.DataFrame({
     #     'Date': ['12.10', '13.10'],
@@ -16,7 +19,7 @@ def load_dataset(file_path='./train.csv'):
 def rows_to_text(dataframe):
     return [" ".join(str(x) for x in row) for row in dataframe.values]
 
-def extract_text_from_pdf(path='./CRYPTO-MODULE-2.pdf'):
+def extract_text_from_pdf(path='./resources/CRYPTO-MODULE-2.pdf'):
     reader = PdfReader(path)
     pages = len(reader.pages)
     texts = []

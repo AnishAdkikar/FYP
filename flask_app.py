@@ -1,10 +1,11 @@
-from flask import Flask, jsonify
+from flask import Flask
+import random
 import requests
 import threading
-# from flask_mysqldb import MySQL
 import utils.preprocessing as preprocessing
-from helper import multi_thread
+from utils.helper import multi_thread
 from config import API_TOKEN
+
 app = Flask(__name__)
 
 @app.route('/test')
@@ -13,11 +14,9 @@ def testing():
     if length<10000:
         M = 10
         efconstruction = 2*M
-        efsearch = M
     else:
         M = random.randint(50, 100)
         efconstruction = 2*M
-        efsearch = M
     userData = {
         'userID':'w',
         'M':str(M),
@@ -33,7 +32,7 @@ def testing():
     # texts = preprocessing.extract_text_from_pdf()
     print(len(texts))
     vectors = {}
-    batch_size = len(texts)//10
+    batch_size = len(texts)//100
     batches = [texts[i:i+batch_size] for i in range(0,len(texts),batch_size)]
     thread_list = []
     for i in batches:
@@ -62,11 +61,9 @@ def test_search():
     length = 50
     if length<10000:
         M = 10
-        efconstruction = 2*M
         efsearch = M
     else:
         M = random.randint(50, 100)
-        efconstruction = 2*M
         efsearch = M
     header={'Content-Type': 'application/json','Authorization': API_TOKEN}
     query = 'common high-affinity IL-3/GM-CSF binding sites'

@@ -13,5 +13,7 @@ def multi_thread(texts,vectors):
         # print(res1.json())
         if res1.status_code != 200:
             continue
-        vector= res1.json()["data"][0]["embedding"]  
+        vector= res1.json()["data"][0]["embedding"]
+        if vectors.get(i,False):
+            continue  
         vectors[i]=vector
