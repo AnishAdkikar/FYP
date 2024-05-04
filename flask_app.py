@@ -79,7 +79,10 @@ def test_search():
         'data':res4.json()["data"][0]["embedding"] 
     }
     res5 = requests.post(url='http://127.0.0.1:8080/search', json=searchData)
-    return res5.json()
+    ans = []
+    for i in res5.json():
+        ans.append(i.split()[0])
+    return ans
 
 
     
