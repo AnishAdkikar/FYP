@@ -47,7 +47,7 @@ def testing():
     # return vectors
 
     addData = {
-        'userID':'w',
+        'userID':'naya',
         'data':vectors
     }
     res3 = requests.post(url='http://127.0.0.1:8080/add-data', json=addData)
@@ -73,7 +73,7 @@ def test_search():
     }
     res4 = requests.post(url='https://api.openai.com/v1/embeddings', json=payload1,headers=header)
     searchData = {
-        'userID':'w',
+        'userID':'naya',
         'K':3,
         'ef': efsearch,
         'data':res4.json()["data"][0]["embedding"] 
@@ -81,7 +81,7 @@ def test_search():
     res5 = requests.post(url='http://127.0.0.1:8080/search', json=searchData)
     ans = []
     for i in res5.json():
-        ans.append(i.split()[0])
+        ans.append(i.split('||||')[0])
     return ans
 
 

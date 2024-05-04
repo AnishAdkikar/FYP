@@ -19,19 +19,19 @@ def load_dataset(file_path='./resources/medical_tc_test.csv'):
     df = pd.DataFrame(df, columns=['condition_label', 'medical_abstract'])
 
     df.replace(to_replace =1,  
-                 value = "Neoplasms $$$$",  
+                 value = "Neoplasms ||||",  
                   inplace = True) 
     df.replace(to_replace =2,  
-                 value = "Digestive system diseases $$$$",  
+                 value = "Digestive system diseases ||||",  
                   inplace = True) 
     df.replace(to_replace =3,  
-                 value = "Nervous system diseases $$$$",  
+                 value = "Nervous system diseases ||||",  
                   inplace = True) 
     df.replace(to_replace =4,  
-                 value = "Cardiovascular diseases $$$$",  
+                 value = "Cardiovascular diseases ||||",  
                   inplace = True) 
     df.replace(to_replace =5,  
-                 value = "General pathological conditions $$$$",  
+                 value = "General pathological conditions ||||",  
                   inplace = True) 
     
     return df
