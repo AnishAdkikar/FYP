@@ -66,7 +66,7 @@ def test_search():
         M = random.randint(50, 100)
         efsearch = M
     header={'Content-Type': 'application/json','Authorization': API_TOKEN}
-    query = 'common high-affinity IL-3/GM-CSF binding sites'
+    query = '''A useful technique for measurement of back strength in osteoporotic and elderly patients. Improvement of back extensor strength (BES) can be used as a therapeutic method for patients with chronic back pain and osteoporosis. The method of evaluation must be reliable and accurate without compromising the condition of the patient. We report the development of a back isometric dynamometer (BID-2000) designed specifically by two of us to address these concerns in elderly patients with osteopenia or osteoporosis. As the demographics of the general population change, increasing numbers of patients will need the type of monitoring that the BID-2000 provides. Aging has been shown to cause a reduction in the number of functional muscle motor units. To examine this effect on BES, we tested 50 normal, healthy women who were 30 to 79 years old. Proper testing of BES in patients with fragile vertebrae should include isometric measurement in the prone position, maneuverability of the device to allow comfortable positioning of the patient, and simplicity of technique to minimize repetitious performance of maximal contraction. The BID-2000 incorporates each of these features and also provides meaningful results inexpensively. The device offers a safe, reliable (coefficient of variation = 2.33%), and valid (P = 0.001) method of evaluation. The results of our study demonstrated moderate, steady reduction of BES with increasing age and with each successive decade. '''
     payload1 = {   
         "model":"text-embedding-3-large",
         "input":query
@@ -74,7 +74,7 @@ def test_search():
     res4 = requests.post(url='https://api.openai.com/v1/embeddings', json=payload1,headers=header)
     searchData = {
         'userID':'w',
-        'K':10,
+        'K':3,
         'ef': efsearch,
         'data':res4.json()["data"][0]["embedding"] 
     }

@@ -3,8 +3,8 @@ from PyPDF2 import PdfReader
 # import sys
 # sys.path.append("..")
 from utils.helper import multi_thread
-def load_dataset(file_path='./resources/train.csv'):
-    df = pd.read_csv(file_path,usecols=[1])
+def load_dataset(file_path='./resources/medical_tc_test.csv'):
+    # df = pd.read_csv(file_path,usecols=[1])
     # df = pd.DataFrame({
     #     'Date': ['12.10', '13.10'],
     #     'Time': ['09.00', '19.00'],
@@ -14,7 +14,28 @@ def load_dataset(file_path='./resources/train.csv'):
     #     'State by video': ['nice', 'tired'],
     #     'Final state': ['good working', 'tiered working']
     # })
-    return df.head(2000)
+    df = pd.read_csv(file_path)
+    # df = pd.read_csv(r"k:/FYP/backup/sql/strings.csv")
+    df = pd.DataFrame(df, columns=['condition_label', 'medical_abstract'])
+
+    df.replace(to_replace =1,  
+                 value = "Neoplasms $$$$",  
+                  inplace = True) 
+    df.replace(to_replace =2,  
+                 value = "Digestive system diseases $$$$",  
+                  inplace = True) 
+    df.replace(to_replace =3,  
+                 value = "Nervous system diseases $$$$",  
+                  inplace = True) 
+    df.replace(to_replace =4,  
+                 value = "Cardiovascular diseases $$$$",  
+                  inplace = True) 
+    df.replace(to_replace =5,  
+                 value = "General pathological conditions $$$$",  
+                  inplace = True) 
+    
+    return df
+    
 
 def rows_to_text(dataframe):
     return [" ".join(str(x) for x in row) for row in dataframe.values]
